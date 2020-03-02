@@ -93,12 +93,13 @@ public class PlayController : MonoBehaviour
         // 画面の右上の座標を取得 (右下じゃないので注意)
         Vector3 screen_RightTop = _mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
-        Vector2 pos = transform.position;
+        Vector3 pos = transform.position;
 
         //プレイヤが画面外に出ないように移動を制限
 //        Mathf.Clamp(transform.position.x,screen_RightTop.x,screen_LeftBottom.x);
         pos.x = Mathf.Clamp(transform.position.x,screen_LeftBottom.x,screen_RightTop.x);
         pos.y = Mathf.Clamp(transform.position.y,screen_LeftBottom.x,screen_RightTop.y);
+        pos.z = transform.position.z;
 
         transform.position = pos;
 
